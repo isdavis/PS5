@@ -3,15 +3,21 @@
 \name{validS}
 \alias{validS}
 \alias{Simpson-class}
-\alias{initialize,Simpson}
-\alias{validity}
-\alias{checker}
+\alias{initialize}
 \title{A Simpson rule object}
 \usage{
 validS(object)
 }
 \description{
 Object of class \code{Simpson} are created by the \code{integrateIt} functions
+}
+\details{
+An object of the class `Simpson' has the following slots:
+\itemize{
+\item \code{x} A numeric vector of x values
+\item \code{y} A numeric vector of corresponding y values, such that y=f(x) is a valid function.
+\item \code{ab} The range, the max and min of the x values
+}
 }
 \author{
 Ian Davis

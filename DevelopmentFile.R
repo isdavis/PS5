@@ -19,6 +19,8 @@ current.code <- as.package("IntegrateIt")
 load_all(current.code)
 document(current.code)
 
+## Check the code for compliance
+check(current.code)
 
 
 

@@ -8,8 +8,9 @@
 #' \item \code{x} A numeric vector of x values
 #' \item \code{y} A numeric vector of corresponding y values, such that y=f(x) is a valid function.
 #' \item \code{ab} The range, the max and min of the x values
+#' }
 #' @author Ian Davis
-#' @aliases Trapezoid-class initialize, Trapezoid validity checker 
+#' @aliases Trapezoid-class initialize
 #' @rdname Trapezoid
 #' @export
 validT<-function(object) {

@@ -3,16 +3,21 @@
 \name{validT}
 \alias{validT}
 \alias{Trapezoid-class}
-\alias{initialize,}
-\alias{Trapezoid}
-\alias{validity}
-\alias{checker}
+\alias{initialize}
 \title{A Trapezoid rule object}
 \usage{
 validT(object)
 }
 \description{
 Object of class \code{Trapezoid} are created by the \code{integrateIt} functions
+}
+\details{
+An object of the class `Trapezoid' has the following slots:
+\itemize{
+\item \code{x} A numeric vector of x values
+\item \code{y} A numeric vector of corresponding y values, such that y=f(x) is a valid function.
+\item \code{ab} The range, the max and min of the x values
+}
 }
 \author{
 Ian Davis
