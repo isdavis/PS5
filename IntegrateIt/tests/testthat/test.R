@@ -2,8 +2,8 @@ context("Calculating Simpson's Rule")
 test_that("Simpson's Rule integral approximation is correct", {
   f1<-new("Simpson", x=c(1,3,5), y=c(1,3,1), ab=c(1,5))
   f2<-new("Simpson", x=c(1,3,5), y=c(1,5,1), ab=c(1,5))
-  expect_that(printSimp(f2), equals(14.666667))
-  expect_that(printSimp(f1), equals(9.3333333))
+  expect_equal(printSimp(f2), 14.666667, tolerance=1e-3)
+  expect_equal(printSimp(f1), 9.3333333, tolerance=1e-3)
 })
 
 context("Calculating Trapezoid Rule")
