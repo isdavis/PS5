@@ -2,7 +2,7 @@ Package: integrateIt
 Title: Integrating Using the Trapezoid Rule and Simpsons Rule
 Version: 0.1
 Author: Ian Davis
-Maintainer: Ian Davis
+Maintainer: Ian Davis <isdavis@wustl.edu>
 Description: Find Trapezoid Rule and Simpson Rule results
 Depends:
     R (>= 3.0.0),
@@ -16,5 +16,4 @@ Collate:
     'integrateIt.R'
     'printTrap.R'
     'printSimp.R'
-    'exampleDataset.R'
-
+RoxygenNote: 6.0.1
