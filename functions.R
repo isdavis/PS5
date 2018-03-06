@@ -66,6 +66,33 @@ setMethod("initialize", "valid", function(.Object, ...) {
   return(value)
 })
 
+setGeneric(name="integrateIt",
+           def=function(x, y, ab, rule, ...)
+           {standardGeneric("integrateIt")}
+)
+
+setMethod(f="integrateIt",
+          definition=function(x, y, ab, rule, ...){
+            if (rule=="Trap") {
+              ret<-new("Trapezoid", x = x, y = y, ab = ab)
+              result<-((ab[2]-ab[1])/length(x))/2*((2*sum(y))-y[1]-y[length(y)])
+            }
+            if (rule=="Simpson") {
+              ret<-new("Simpson", x = x, y = y, ab = ab)
+              z<-0
+              for(i in 1:length(y)) {
+                z<-z+2*y[i]+2*y[i]*((i-1) %% 2)
+              }
+              result<-((ab[2]-ab[1])/length(x))/3*(z-y[1]-y[length(y)])
+              print(result)
+            }
+            return(list(ret, result))
+          }
+)
+
+integrateIt(c(1,2,3,4,5), c(1,2,3,4,5), c(1,5), "Trap")
+integrateIt(c(1,2,3,4,5), c(1,2,3,4,5), c(1,5), "Simpson")
+
 setGeneric(name="addSquares",
            def=function(x, y, ...)
            {standardGeneric("addSquares")}
@@ -77,4 +104,5 @@ setMethod(f="addSquares",
           }
 )
 
+addSquares(3,3)
 
