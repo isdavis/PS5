@@ -1,10 +1,9 @@
 setwd("C:/Users/isdav/Documents/GitHub/PS5")
 
-#This is a way for me to test if PS5 functions actually work before packaging them. 
-#This first bit is adapted from PS4 to create the validity checker and classes. 
+#This is PS5! This first bit is adapted from PS4 to create the validity checker and classes. 
 
 #This checks the values for x, y, and ab, which is the range. 
-valid<-function(object) {
+validT<-function(object) {
   x<-object@x
   y<-object@y
   ab<-object@ab
@@ -26,17 +25,18 @@ setClass(Class="Trapezoid",
            x = c(),
            y = c(),
            ab = c()
-         ), validity = valid
+         ), validity = validT
 )
 
 
 
-valid<-function(object) {
+validS<-function(object) {
   x<-object@x
   y<-object@y
   ab<-object@ab
   errors<-character()
   if(length(ab)!=2) {errors<-"Invalid range."}
+  if((length(x) %% 2)==0) {errors<-"For Simpson rule, n must be odd."}
   if(length(x)<2) {errors<-"At least 2 points required to construct a curve."}
   else if((x[2]-x[1])!=x[length(x)]-x[length(x)-1]) {errors<-"X values must be evenly spaced."}
   #Elementary test to see if the points are evenly spaced
@@ -54,34 +54,17 @@ setClass(Class="Simpson",
            x = c(),
            y = c(),
            ab = c()
-         ), validity = valid
+         ), validity = validS
 )
 
 #This is an example to test the validity checkers; it can be changed around however you like. 
-b<-new("Simpson", x=c(1,2,5), y=c(1,4,9), ab=c(1,5))
+b<-new("Simpson", x=c(1,2,3,4), y=c(1,2,3,9), ab=c(1,4))
 
 setMethod("initialize", "valid", function(.Object, ...) {
   value = callNextMethod()
   validObject(value)
   return(value)
 })
-
-
-
-setGeneric("IntegrateIt", function() {
-  standardGeneric("IntegrateIt")
-})
-
-setMethod("IntegrateIt", function(object) {
-  return(class(object))
-})
-
-
-myObject <- new("Squares",
-                square = 13,
-                x = 3,
-                y = 2)
-getSquares(myObject)
 
 setGeneric(name="addSquares",
            def=function(x, y, ...)
@@ -93,4 +76,5 @@ setMethod(f="addSquares",
             return(new("Squares", square=(x^2 + y^2), x = x, y = y))
           }
 )
+
 
