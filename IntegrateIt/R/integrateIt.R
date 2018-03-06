@@ -7,7 +7,7 @@
 #' @param ab A numeric vector equal to the max and min of \code{x}.
 #' @param rule A character string, denoting either "Trap" or "Simpson"
 #'
-#' @return An object of class Trapezoid or Simpson, depending on \code{rule}, containing
+#' @return The evaluation of the Simpson or Trapezoid rule, and an object of class Trapezoid or Simpson, depending on \code{rule}, containing
 #'  \item{x}{A numeric vector of x values}
 #'  \item{y}{A numeric vector of corresponding y values, such that y=f(x) is a valid function.} 
 #'  \item{ab}{The range, the max and min of the x values. }
