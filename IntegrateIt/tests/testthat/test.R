@@ -21,3 +21,5 @@ test_that("The two should both be equal to the definite integral for a linear fu
   expect_that(printSimp(fS), equals(12))
   expect_that(printTrap(fT), equals(12))
 })
+
+##All trapezoid/simpson/integral calculations for expected answers were done on WolframAlpha's calculator
