@@ -10,19 +10,19 @@
 #' @examples
 #' 
 #' b<-new("Trapezoid", x=c(1,2,3,4,5), y=c(1,2,3,1,1), ab=c(1,5))
-#' printSimp(b)
+#' printTrap(b)
 #' 
 #' @seealso \code{\link{integrateIt}}
 #' @rdname printTrap
 #' @aliases printTrap,ANY-method
 #' @export
 setGeneric(name="printTrap",
-           def=function(object="Trapezoid")
+           function(object)
            {standardGeneric("printTrap")}
 )
 #' @export
-setMethod(f="printTrap",
-          definition=function(object="Trapezoid"){
-            result<-((object@ab[2]-object@ab[1])/length(object@x))/2*((2*sum(object@y))-object@y[1]-object@y[length(object@y)])
+setMethod("printTrap", signature(object="Trapezoid"),
+          function(object){
+            result<-((object@ab[2]-object@ab[1])/(length(object@x)-1))/2*((2*sum(object@y))-object@y[1]-object@y[length(object@y)])
             print(result)
-            return()})
+            return(result)})

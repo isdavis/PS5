@@ -5,7 +5,7 @@
 \alias{printTrap,ANY-method}
 \title{Printing result of the Trapezoid Rule}
 \usage{
-printTrap(object = "Trapezoid")
+printTrap(object)
 }
 \arguments{
 \item{object}{An object of class Simpson}
@@ -22,7 +22,7 @@ This is a very simple function
 \examples{
 
 b<-new("Trapezoid", x=c(1,2,3,4,5), y=c(1,2,3,1,1), ab=c(1,5))
-printSimp(b)
+printTrap(b)
 
 }
 \seealso{

@@ -22,6 +22,15 @@ document(current.code)
 ## Check the code for compliance
 check(current.code)
 
+## Running tests
+setwd("C:/Users/Ian Davis/Documents/GitHub/PS5/IntegrateIt")
+devtools::test()
 
+## Install the package
+install(pkg=current.code, local=TRUE)
+
+
+## Build a version of the package to share manually
+build(current.code, path=getwd())
 
 

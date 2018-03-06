@@ -5,7 +5,7 @@
 \alias{printSimp,ANY-method}
 \title{Printing result of the Simpson Rule}
 \usage{
-printSimp(object = "Simpson")
+printSimp(object)
 }
 \arguments{
 \item{object}{An object of class Simpson}

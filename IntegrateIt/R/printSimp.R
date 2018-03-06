@@ -17,17 +17,17 @@
 #' @aliases printSimp,ANY-method
 #' @export
 setGeneric(name="printSimp",
-           def=function(object="Simpson")
+           function(object)
            {standardGeneric("printSimp")}
 )
 #' @export
-setMethod(f="printSimp",
-          definition=function(object="Simpson"){
+setMethod("printSimp", signature(object="Simpson"),
+          function(object){
             z<-0
             for(i in 1:length(object@y)) {
               z<-z+2*object@y[i]+2*object@y[i]*((i-1) %% 2)
             }
-            result<-((object@ab[2]-object@ab[1])/length(object@x))/3*(z-object@y[1]-object@y[length(object@y)])
+            result<-((object@ab[2]-object@ab[1])/(length(object@x)-1))/3*(z-object@y[1]-object@y[length(object@y)])
             print(result)
             return(result)})
 

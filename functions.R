@@ -1,4 +1,4 @@
-setwd("C:/Users/isdav/Documents/GitHub/PS5")
+setwd("C:/Users/Ian Davis/Documents/GitHub/PS5")
 
 #This is PS5! This first bit is adapted from PS4 to create the validity checker and classes. 
 
@@ -77,7 +77,7 @@ setMethod(f="integrateIt",
           definition=function(x, y, ab, rule, ...){
             if (rule=="Trap") {
               ret<-new("Trapezoid", x = x, y = y, ab = ab)
-              result<-((ab[2]-ab[1])/length(x))/2*((2*sum(y))-y[1]-y[length(y)])
+              result<-((ab[2]-ab[1])/(length(x)-1))/2*((2*sum(y))-y[1]-y[length(y)])
             }
             if (rule=="Simpson") {
               ret<-new("Simpson", x = x, y = y, ab = ab)
@@ -86,7 +86,7 @@ setMethod(f="integrateIt",
                 z<-z+2*y[i]+2*y[i]*((i-1) %% 2)
               }
               print(z)
-              result<-((ab[2]-ab[1])/length(x))/3*(z-y[1]-y[length(y)])
+              result<-((ab[2]-ab[1])/(length(x)-1))/3*(z-y[1]-y[length(y)])
               print(result)
             }
             return(list(ret, result))
@@ -94,26 +94,26 @@ setMethod(f="integrateIt",
 )
 
 setGeneric(name="printSimp",
-           def=function(object="Simpson")
+           function(object)
            {standardGeneric("printSimp")}
 )
-setMethod(f="printSimp",
-          definition=function(object="Simpson"){
+setMethod("printSimp", signature(object="Simpson"),
+          function(object){
             z<-0
             for(i in 1:length(object@y)) {
               z<-z+2*object@y[i]+2*object@y[i]*((i-1) %% 2)
             }
-            result<-((object@ab[2]-object@ab[1])/length(object@x))/3*(z-object@y[1]-object@y[length(object@y)])
+            result<-((object@ab[2]-object@ab[1])/(length(object@x)-1))/3*(z-object@y[1]-object@y[length(object@y)])
             print(result)
             return()})
 
 setGeneric(name="printTrap",
-           def=function(object="Trapezoid")
+           function(object)
            {standardGeneric("printTrap")}
 )
-setMethod(f="printTrap",
-          definition=function(object="Trapezoid"){
-            result<-((object@ab[2]-object@ab[1])/length(object@x))/2*((2*sum(object@y))-object@y[1]-object@y[length(object@y)])
+setMethod("printTrap", signature(object="Trapezoid"),
+          function(object){
+            result<-((object@ab[2]-object@ab[1])/(length(object@x)-1))/2*((2*sum(object@y))-object@y[1]-object@y[length(object@y)])
             print(result)
             return()})
 
@@ -124,6 +124,6 @@ i<-new("Simpson", x=c(1,2,3,4,5), y=c(1,2,3,1,1), ab=c(1,5))
 b<-new("Trapezoid", x=c(1,2,3,4,5), y=c(1,2,3,1,1), ab=c(1,5))
 
 integrateIt(c(1,2,3,4,5), c(1,2,3,2,1), c(1,5), "Trap")
-integrateIt(c(1,2,3,4,5), c(1,2,3,1,1), c(1,5), "Simpson")
+integrateIt(c(1,3,5), c(1,3,5), c(1,5), "Simpson")
 
 package.skeleton(name="integrateIt")
