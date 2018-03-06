@@ -93,7 +93,37 @@ setMethod(f="integrateIt",
           }
 )
 
+setGeneric(name="printSimp",
+           def=function(object="Simpson")
+           {standardGeneric("printSimp")}
+)
+setMethod(f="printSimp",
+          definition=function(object="Simpson"){
+            z<-0
+            for(i in 1:length(object@y)) {
+              z<-z+2*object@y[i]+2*object@y[i]*((i-1) %% 2)
+            }
+            result<-((object@ab[2]-object@ab[1])/length(object@x))/3*(z-object@y[1]-object@y[length(object@y)])
+            print(result)
+            return()})
+
+setGeneric(name="printTrap",
+           def=function(object="Trapezoid")
+           {standardGeneric("printTrap")}
+)
+setMethod(f="printTrap",
+          definition=function(object="Trapezoid"){
+            result<-((object@ab[2]-object@ab[1])/length(object@x))/2*((2*sum(object@y))-object@y[1]-object@y[length(object@y)])
+            print(result)
+            return()})
+
+printSimp(b)
+printTrap(i)
+
+i<-new("Simpson", x=c(1,2,3,4,5), y=c(1,2,3,1,1), ab=c(1,5))
+b<-new("Trapezoid", x=c(1,2,3,4,5), y=c(1,2,3,1,1), ab=c(1,5))
+
 integrateIt(c(1,2,3,4,5), c(1,2,3,2,1), c(1,5), "Trap")
 integrateIt(c(1,2,3,4,5), c(1,2,3,1,1), c(1,5), "Simpson")
 
-
+package.skeleton(name="integrateIt")

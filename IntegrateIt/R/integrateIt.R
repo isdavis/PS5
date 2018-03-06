@@ -28,7 +28,7 @@ setGeneric(name="integrateIt",
            def=function(x, y, ab, rule, ...)
            {standardGeneric("integrateIt")}
 )
-
+#' @export
 setMethod(f="integrateIt",
           definition=function(x, y, ab, rule, ...){
             if (rule=="Trap") {
